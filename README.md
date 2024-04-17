@@ -77,7 +77,14 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
-
+1. Tergantung pada penggunaan dari penggunaan Subscriber itu sendiri. Apabila Subscriber berkemungkinan akan dikembangkan dengan tipe user yang lain maka  interface diperlukan, tetapi jika tidak ada rencana perubahan maka single struct cukup.
+2. Penggunaan DashMap necessary pada kasus ini untuk melakukan pencarian tanpa memakan waktu yang lama. Namun dari pandangan saya pengimplementasian menggunakan Vec juga bisa dilakukan, tetapi kurang efisien apabila melakukan pencarian.
+3. Singleton pattern dapat digunakan, tetapi penggunaan DashMap dapat dikatakan sebagai pilihan yang lebih baik karna mendukung konkurensi dengan dan penggunaan singleton yang hanya menggunakan single instance.
 #### Reflection Publisher-2
+1. Sebagai bentuk pembagian tugas. Seperti diketahui bahwa service digunakan untuk business logic, repository sebagai pengatur organisasi data, dan model sebagai representais objek. Dengan adanya pembagian tugas ini akan memudahkan maintainability dari projek.
+2. Akan membuat kode akan lebih susah dimaintain karena tidak ada pembagian tugas dan kompleksitas akan bertambah. Hal tersebut terjadi karena logics dan data di handle oleh model saja. fleksibilitas penggunaan data dan penggunaan method juga akan berkurang.
+3. Ya, dengan penggunaan postman akan memudahkan dalam mengirim request http dan mendapatkan response dengan jelas. selain itu, terdapat fitur collection yang membantu menyimpan request yang telah dilakukan.
 
 #### Reflection Publisher-3
+1. Menggunakan push model yang dapat diketahui dari adanya pengiriman notifikasi  kepada subscriber sebagai observer.
+2. keuntungannya subscriber bisa melakukan pengambilan data diwaktu yang ia inginkan dan memiliki kontrol lebih. Kekurangannya pengguna tidak akan menerima update pada saat tidak  meminta dan ada kemungkinan memberatkan server subjek karena permintaan yang bisa jadi banyak karena bersamaan.
