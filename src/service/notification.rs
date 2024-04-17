@@ -2,10 +2,13 @@ use std::thread;
 
 use bambangshop::{Result, compose_error_response};
 use rocket::http::Status;
+use rocket::response::status;
 use crate::model::notification::Notification;
 use crate::model::product::Product;
 use crate::model::subscriber::{self, Subscriber};
 use crate::repository::subscriber::SubscriberRepository;
+
+use super::product;
 
 pub struct NotificationService;
 
@@ -28,5 +31,15 @@ impl NotificationService{
             ));
         }
         return Ok(result.unwrap());
+    }
+
+    pub fn notify(&self, product_type: &str, status: &str, product: Product) {
+        let mut payload: Notification = Notification {
+            product_title: product.clone().title,
+            product_type: String::from(product_type),
+            product_url: product.clone().get_url(),
+            subscriber_name: String::from(""),
+            status: String::from(status)
+        };
     }
 }
