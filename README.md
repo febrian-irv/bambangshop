@@ -88,3 +88,4 @@ This is the place for you to write reflections:
 #### Reflection Publisher-3
 1. Menggunakan push model yang dapat diketahui dari adanya pengiriman notifikasi  kepada subscriber sebagai observer.
 2. keuntungannya subscriber bisa melakukan pengambilan data diwaktu yang ia inginkan dan memiliki kontrol lebih. Kekurangannya pengguna tidak akan menerima update pada saat tidak  meminta dan ada kemungkinan memberatkan server subjek karena permintaan yang bisa jadi banyak karena bersamaan.
+3. akan berjalan lebih lama karena notifikasi dikirim satu per satu.
